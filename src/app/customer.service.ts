@@ -89,7 +89,7 @@ export class CustomerService {
   }
 
   /** DELETE: delete the hero from the server */
-deleteHero(customer: Customer | number): Observable<Customer> {
+deleteCustomer(customer: Customer | number): Observable<Customer> {
   const id = typeof customer === 'number' ? customer : customer.id;
   const url = `${this.customersUrl}/${id}`;
 

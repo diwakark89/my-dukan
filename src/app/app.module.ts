@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './in-memory-data.service';
@@ -14,26 +15,30 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { CustomerSearchComponent } from './customer/customer-search/customer-search.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { CustomerModule } from './customer/customer.module';
+import { CrisisCenterComponent } from './crisis-center/crisis-center/crisis-center.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    MessagesComponent,
-    DashboardComponent,
-    CustomerSearchComponent,
-    PageNotFoundComponent
-    
-  ],
   imports: [
     BrowserModule,
     FormsModule,
+    BrowserAnimationsModule,
     HttpClientModule,
     HttpClientInMemoryWebApiModule.forRoot(
       InMemoryDataService, { dataEncapsulation: false }
     ),
     CustomerModule,
-    AppRoutingModule,
+    AppRoutingModule
   ],
+  
+  declarations: [
+    AppComponent,
+    MessagesComponent,
+    DashboardComponent,
+    CustomerSearchComponent,
+    CrisisCenterComponent,
+    PageNotFoundComponent
+  ],
+ 
   providers: [],
   bootstrap: [AppComponent]
 })

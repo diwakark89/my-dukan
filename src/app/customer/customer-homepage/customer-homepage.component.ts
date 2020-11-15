@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { from } from 'rxjs';
+import { from, Observable } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
+import { switchMap } from 'rxjs/operators'
+
 import { MessageService } from 'src/app/message.service';
 import { Customer } from '../customer';
 import { CustomerService } from '../customer.service';
@@ -13,11 +16,24 @@ import { CustomerService } from '../customer.service';
 export class CustomerHomepageComponent implements OnInit {
   customers: Customer[];
 
-  constructor(private customerService:CustomerService, 
-    private messageService: MessageService) { }
+  customers$: Observable<Customer[]>;
+  selectedId: number;
 
+  constructor(
+    private customerService:CustomerService, 
+    private messageService: MessageService,
+    private route:ActivatedRoute) { }
+
+
+    
   ngOnInit() {
-    this.getCustomers();
+    this.customers$ = this.route.paramMap.pipe(
+      switchMap(params => {
+        // (+) before `params.get()` turns the string into a number
+        this.selectedId = +params.get('id');
+        return this.customerService.getCustomers();
+      })
+    );
   }
 
   add(name: string): void {

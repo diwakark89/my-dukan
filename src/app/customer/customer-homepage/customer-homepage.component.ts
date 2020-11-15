@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { from } from 'rxjs';
+import { MessageService } from 'src/app/message.service';
 import { Customer } from '../customer';
-import {CustomerService} from '../customer.service';
-import { MessageService } from '../message.service';
+import { CustomerService } from '../customer.service';
+
 
 @Component({
   selector: 'app-customer-homepage',
@@ -10,18 +11,13 @@ import { MessageService } from '../message.service';
   styleUrls: ['./customer-homepage.component.css']
 })
 export class CustomerHomepageComponent implements OnInit {
- 
   customers: Customer[];
 
-  constructor(private customerService:CustomerService, private messageService: MessageService) { }
+  constructor(private customerService:CustomerService, 
+    private messageService: MessageService) { }
 
   ngOnInit() {
     this.getCustomers();
-  }
-
-  getCustomers():void{
-    this.customerService.getCustomers()
-    .subscribe(customers=>this.customers=customers);
   }
 
   add(name: string): void {
@@ -33,7 +29,12 @@ export class CustomerHomepageComponent implements OnInit {
       });
   }
 
-  delete(customer: Customer): void {
+  getCustomers():void{
+    this.customerService.getCustomers()
+    .subscribe(customers=>this.customers=customers);
+  }
+
+   delete(customer: Customer): void {
     this.customers = this.customers.filter(h => h !== customer);
     this.customerService.deleteCustomer(customer).subscribe();
   }

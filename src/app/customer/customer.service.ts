@@ -5,7 +5,7 @@ import { catchError, map, tap } from 'rxjs/operators';
 
 import { Customer } from './customer';
 import { CUSTOMERS } from './mock-customer';
-import { MessageService } from './message.service';
+import { MessageService } from '../message.service';
 
 
 @Injectable({

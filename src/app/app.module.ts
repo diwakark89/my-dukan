@@ -9,29 +9,30 @@ import { HttpClientModule } from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './in-memory-data.service';
 
-import { CustomerHomepageComponent } from './customer-homepage/customer-homepage.component';
-import { CustomerDetailComponent } from './customer-detail/customer-detail.component';
 import { MessagesComponent } from './messages/messages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { CustomerSearchComponent } from './customer-search/customer-search.component';
+import { CustomerSearchComponent } from './customer/customer-search/customer-search.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { CustomerModule } from './customer/customer.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CustomerHomepageComponent,
-    CustomerDetailComponent,
     MessagesComponent,
     DashboardComponent,
-    CustomerSearchComponent
+    CustomerSearchComponent,
+    PageNotFoundComponent
+    
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     FormsModule,
     HttpClientModule,
     HttpClientInMemoryWebApiModule.forRoot(
       InMemoryDataService, { dataEncapsulation: false }
     ),
+    CustomerModule,
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

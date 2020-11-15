@@ -1,7 +1,7 @@
 <h3>Top Customers</h3>
 <div class="grid grid-pad">
   <a *ngFor="let customer of customers" class="col-1-4"
-      routerLink="/detail/{{customer.id}}">
+      routerLink="/customer/{{customer.id}}">
     <div class="module customer">
       <h4>{{customer.name}}</h4>
     </div>

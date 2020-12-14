@@ -16,6 +16,7 @@ import { CustomerAddComponent } from './customer-add/customer-add.component';
     CustomerSearchComponent,
     CustomerRecordComponent,
     CustomerAddComponent
+
   ],
   imports: [
     CommonModule,

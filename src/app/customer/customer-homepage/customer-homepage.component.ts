@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { from, Observable } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { switchMap } from 'rxjs/operators'
-
 import { Customer } from '../customer';
 import { CustomerService } from '../customer.service';
 
@@ -15,17 +14,22 @@ import { CustomerService } from '../customer.service';
 export class CustomerHomepageComponent implements OnInit {
   customers: Customer[];
 
+<<<<<<< HEAD:src/app/customer/customer-homepage/customer-homepage.component.ts
   constructor(
     private customerService:CustomerService,
     private route:ActivatedRoute) { }
     
-  ngOnInit() {
-    this.getCustomers();
-  }
 
-  getCustomers():void{
-    this.customerService.getCustomers()
-    .subscribe(customers=>this.customers=customers);
+
+    
+  ngOnInit() {
+    this.customers$ = this.route.paramMap.pipe(
+      switchMap(params => {
+        // (+) before `params.get()` turns the string into a number
+        this.selectedId = +params.get('id');
+        return this.customerService.getCustomers();
+      })
+    );
   }
 
   add(name: string): void {
@@ -37,7 +41,7 @@ export class CustomerHomepageComponent implements OnInit {
       });
   }
 
-  
+
 
    delete(customer: Customer): void {
     this.customers = this.customers.filter(h => h !== customer);

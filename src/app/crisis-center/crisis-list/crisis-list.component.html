@@ -1,5 +1,3 @@
-
-<app-customer-search></app-customer-search>
 <h2>My Customers</h2>
 
 <div>
@@ -13,16 +11,15 @@
   </button>
 </div>
 
-<app-customer-record></app-customer-record>
-<!-- <ul class="customers">
-  <li *ngFor="let customer of customers"
-  [class.selected]="customer.id === selectedId" >
-
+<ul class="customers">
+  <li *ngFor="let customer of customers$ | async"
+  [class.selected]="customer.id === selectedId">
    <a [routerLink]="['/customer', customer.id]">
       <span class="badge">{{ customer.id }}</span> {{ customer.name }}
     </a>
-    <button class="delete" title="delete customer" (click)="delete(customer)">X</button>
+    <button class="delete" title="delete customer" (click)="delete(customer)">
+      X
+    </button>
   </li>
-</ul> -->
-
+</ul>
 

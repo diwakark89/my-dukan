@@ -78,7 +78,6 @@ export class CustomerService {
   deleteCustomer(customer: Customer | number): Observable<Customer> {
     const id = typeof customer === 'number' ? customer : customer.id;
     const url = `${this.customersUrl}/${id}`;
-
     return this.http.delete<Customer>(url, this.httpOptions).pipe(
       tap(_ => console.log(`deleted customer id=${id}`)),
       catchError(this.handleError<Customer>('deleteCustomer'))

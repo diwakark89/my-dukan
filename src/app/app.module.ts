@@ -28,6 +28,7 @@ import { CommonModule } from '@angular/common';
     AppRoutingModule,
    
     BrowserModule,
+
     BrowserAnimationsModule,
     HttpClientModule,
     HttpClientInMemoryWebApiModule.forRoot(

@@ -14,11 +14,12 @@ import { CustomerService } from '../customer.service';
 export class CustomerHomepageComponent implements OnInit {
   customers: Customer[];
 
-<<<<<<< HEAD:src/app/customer/customer-homepage/customer-homepage.component.ts
+  customers$: Observable<Customer[]>;
+  selectedId: number;
+
   constructor(
-    private customerService:CustomerService,
+    private customerService:CustomerService, 
     private route:ActivatedRoute) { }
-    
 
 
     
@@ -41,7 +42,10 @@ export class CustomerHomepageComponent implements OnInit {
       });
   }
 
-
+  getCustomers():void{
+    this.customerService.getCustomers()
+    .subscribe(customers=>this.customers=customers);
+  }
 
    delete(customer: Customer): void {
     this.customers = this.customers.filter(h => h !== customer);

@@ -1,38 +1,46 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './in-memory-data.service';
 
-import { CustomerHomepageComponent } from './customer-homepage/customer-homepage.component';
-import { CustomerDetailComponent } from './customer-detail/customer-detail.component';
-import { MessagesComponent } from './messages/messages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { CustomerSearchComponent } from './customer-search/customer-search.component';
+
+import { AppComponent } from './app.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+
+import { AppRoutingModule } from './app-routing.module';
+import { CustomerModule } from './customer/customer.module';
+
+import { CommonModule } from '@angular/common';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    CustomerHomepageComponent,
-    CustomerDetailComponent,
-    MessagesComponent,
-    DashboardComponent,
-    CustomerSearchComponent
-  ],
   imports: [
-    BrowserModule,
-    AppRoutingModule,
+    CommonModule,
     FormsModule,
+    
+    CustomerModule,
+    AppRoutingModule,
+   
+    BrowserModule,
+    BrowserAnimationsModule,
     HttpClientModule,
     HttpClientInMemoryWebApiModule.forRoot(
       InMemoryDataService, { dataEncapsulation: false }
-    ),
+    )
   ],
+  
+  declarations: [
+    AppComponent,
+    DashboardComponent,
+    PageNotFoundComponent
+  ],
+ 
   providers: [],
   bootstrap: [AppComponent]
 })

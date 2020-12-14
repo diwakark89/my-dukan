@@ -1,0 +1,13 @@
+<p>Customer record</p>
+
+<ul class="customers">
+  <li
+    *ngFor="let customer of customerData"
+    [class.selected]="customer.id === selectedId"
+  >
+    <a [routerLink]="['/customer', customer.id]">
+      <span class="badge">{{ customer.id }}</span> {{ customer.name }}
+    </a>
+  </li>
+</ul>
+

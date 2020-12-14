@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { from } from 'rxjs';
+import { from, Observable } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
+import { switchMap } from 'rxjs/operators'
+
 import { Customer } from '../customer';
-import {CustomerService} from '../customer.service';
-import { MessageService } from '../message.service';
+import { CustomerService } from '../customer.service';
+
 
 @Component({
   selector: 'app-customer-homepage',
@@ -10,11 +13,12 @@ import { MessageService } from '../message.service';
   styleUrls: ['./customer-homepage.component.css']
 })
 export class CustomerHomepageComponent implements OnInit {
- 
   customers: Customer[];
 
-  constructor(private customerService:CustomerService, private messageService: MessageService) { }
-
+  constructor(
+    private customerService:CustomerService,
+    private route:ActivatedRoute) { }
+    
   ngOnInit() {
     this.getCustomers();
   }
@@ -33,7 +37,9 @@ export class CustomerHomepageComponent implements OnInit {
       });
   }
 
-  delete(customer: Customer): void {
+  
+
+   delete(customer: Customer): void {
     this.customers = this.customers.filter(h => h !== customer);
     this.customerService.deleteCustomer(customer).subscribe();
   }

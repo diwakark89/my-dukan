@@ -5,7 +5,7 @@
 
   <ul class="search-result">
     <li *ngFor="let customer of customers$ | async" >
-      <a routerLink="/detail/{{customer.id}}">
+      <a routerLink="/customer/{{customer.id}}">
         {{customer.name}}
       </a>
     </li>

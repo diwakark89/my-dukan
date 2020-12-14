@@ -1,8 +1,11 @@
-<h1>{{title}}</h1>
+<h1>{{ title }}</h1>
 <nav>
-    <a routerLink="/dashboard">Dashboard</a>
-    <a routerLink="/customers">Customer</a>
+  <a class="button" routerLinkActive="activeButton" routerLink="/dashboard" >Dashboard</a>
+  <a class="button" routerLinkActive="activeButton" routerLink="/customers" >Customer</a>
+  <a class="button" routerLinkActive="activeButton" routerLink="/add/customer" >Add Customer</a>
 </nav>
-<router-outlet></router-outlet>
-<app-messages></app-messages>
+
+<div [@routeAnimation]="getAnimationData(routerOutlet)">
+  <router-outlet #routerOutlet="outlet"></router-outlet>
+</div>
 

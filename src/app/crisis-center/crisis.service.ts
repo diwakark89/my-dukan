@@ -5,7 +5,7 @@ import { catchError, map, tap } from 'rxjs/operators';
 
 import { Crisis } from './crisis';
 import { CRISES } from './mock-crisis';
-import { MessageService } from '../message.service';
+
 
 
 @Injectable({
@@ -21,8 +21,7 @@ export class CrisisService {
   };
 
   constructor(
-    private http: HttpClient,
-    private messageService: MessageService) { }
+    private http: HttpClient) { }
 
   /** PUT: update the hero on the server */
   updateCrisis(crisis: Crisis): Observable<any> {
